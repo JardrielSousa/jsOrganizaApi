@@ -38,12 +38,9 @@ public class ProdutoController {
 		 return ResponseEntity.status(HttpStatus.OK).body(produtos);
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<List<Produto>> buscarProduto(@PathVariable("id") Long id) throws Exception {
-		 Optional<Produto> produtos = produtoService.buscarProduto(id);
-		 if(produtos.isPresent()) {
-			 ResponseEntity.status(HttpStatus.OK).body(produtos);
-		 }
-		 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Arrays.asList());
+	public ResponseEntity<Optional<Produto>> buscarProduto(@PathVariable("id") Long id){
+		return	 ResponseEntity.status(HttpStatus.OK).body(produtoService.buscarProduto(id));
+		 
 	}
 	
 	@PostMapping
