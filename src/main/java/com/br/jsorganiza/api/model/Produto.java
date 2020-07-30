@@ -3,6 +3,8 @@ package com.br.jsorganiza.api.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
 public class Produto {
@@ -10,8 +12,11 @@ public class Produto {
 	@Id
 	@GeneratedValue
 	private Long Id;
+	@NotNull(message = "Nome é obrigatório")
 	private String nome;
+	@PositiveOrZero(message = "São permitidos apenas números positivos e zero")
 	private Double valor;
+	@PositiveOrZero(message = "São permitidos apenas números positivos e zero")
 	private int quantidade;
 	
 	public Produto() {
@@ -27,7 +32,9 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 
-
+	public Produto(Long id) {
+		id = Id;
+	}
 	public Long getId() {
 		return Id;
 	}

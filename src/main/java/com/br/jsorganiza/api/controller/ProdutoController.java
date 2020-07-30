@@ -39,7 +39,11 @@ public class ProdutoController {
 	}
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Produto>> buscarProduto(@PathVariable("id") Long id){
-		return	 ResponseEntity.status(HttpStatus.OK).body(produtoService.buscarProduto(id));
+		Optional<Produto> produtoResult = produtoService.buscarProduto(id);
+		if(produtoResult == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(produtoResult);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(produtoResult);
 		 
 	}
 	

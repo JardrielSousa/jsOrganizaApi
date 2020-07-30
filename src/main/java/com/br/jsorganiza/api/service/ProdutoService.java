@@ -18,15 +18,26 @@ public class ProdutoService {
 		return produtoRepository.findAll();
 	}
 	public Optional<Produto> buscarProduto(Long id){
-		return produtoRepository.findById(id);
+		Produto livro = produtoExiste(id);
+		return Optional.of(livro) ;
 	}
+	
 	public Produto criarProduto(Produto produto) {
 		return produtoRepository.save(produto);
 	}
 	public Produto editarProduto(Produto produto) {
+		produtoExiste(produto.getId());
 		return criarProduto(produto);
 	}
 	public void deletarProduto(Long id) {
 		produtoRepository.deleteById(id);
+	}
+	
+	private Produto produtoExiste(Long id) {
+		Produto produto = produtoRepository.findById(id).orElse(null);
+		if(produto == null) {
+			return null;
+		}
+		return produto;
 	}
 }
