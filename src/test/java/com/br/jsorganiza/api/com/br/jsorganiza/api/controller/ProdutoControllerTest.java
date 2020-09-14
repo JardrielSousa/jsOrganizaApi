@@ -5,6 +5,7 @@ import static io.restassured.module.mockmvc.RestAssuredMockMvc.standaloneSetup;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,10 +60,10 @@ class ProdutoControllerTest {
 	
 	@Test
 	void test03deveRetornarSucesso_QuandoCriarProduto() {
-		when(this.produtoService.criarProduto(new Produto(1L, "produto criado", 99.0, 1))).thenReturn(new Produto(1L, "produto criado", 99.0, 1));
+		when(this.produtoService.criarProduto(new Produto(1L, "produto criado", 99.0, 1,new Date()))).thenReturn(new Produto(1L, "produto criado", 99.0, 1,new Date()));
 		given()
 			.accept(ContentType.JSON)
-			.body(new Produto(1L, "produto criado", 99.0, 1))
+			.body(new Produto(1L, "produto criado", 99.0, 1,new Date()))
 			.contentType(ContentType.JSON)
 		.when()
 			.post("https://localhost:8080/v1/produto/")
@@ -82,15 +83,15 @@ class ProdutoControllerTest {
 	 */
 	
 	private List<Object> todosOsProdutos() {
-		return Arrays.asList(produtoIdUm(),new Produto(2L,"teste 2",20.0,1));
+		return Arrays.asList(produtoIdUm(),new Produto(2L,"teste 2",20.0,1,new Date()));
 	}
 	
 	private Optional<Produto> produtoIdUm() {
-		return Optional.ofNullable(new Produto(1L,"teste",20.0,1));
+		return Optional.ofNullable(new Produto(1L,"teste",20.0,1,new Date()));
 	}
 	
 	private Produto produtoEditado() {
-		Produto produto = new Produto(1L, "produto editado", 100.0, 2);
+		Produto produto = new Produto(1L, "produto editado", 100.0, 2,new Date());
 		return produto ;
 	}
 	
