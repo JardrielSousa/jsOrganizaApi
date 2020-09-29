@@ -11,9 +11,12 @@ import com.br.jsorganiza.api.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
-	@Autowired
+
 	private ProdutoRepository produtoRepository;
 	
+	public ProdutoService(ProdutoRepository produtoRepository) {
+		this.produtoRepository = produtoRepository;
+	}
 	public List<Produto> buscarTodosProduto(){
 		return produtoRepository.findAll();
 	}

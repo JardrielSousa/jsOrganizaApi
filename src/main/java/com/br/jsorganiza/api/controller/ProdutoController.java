@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.br.jsorganiza.api.model.Produto;
 import com.br.jsorganiza.api.service.ProdutoService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/v1/produto")
@@ -50,6 +53,7 @@ public class ProdutoController {
 	@PostMapping
 	public ResponseEntity<Produto> criarProduto(@RequestBody Produto produto) {
 		produtoService.criarProduto(produto);
+		log.info("Produto foi criado!!!");
 		return ResponseEntity.status(HttpStatus.CREATED).body(produto);
 	}
 	
@@ -63,6 +67,7 @@ public class ProdutoController {
 			produtoNovo.setQuantidade(produto.getQuantidade());
 			produtoNovo.setValor(produto.getValor());
 			produtoService.editarProduto(produtoNovo);
+			log.info("Produto foi alterado!!!");
 			return ResponseEntity.status(HttpStatus.OK).body(produtoNovo);
 		}		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Produto());
@@ -76,6 +81,7 @@ public class ProdutoController {
 			return ResponseEntity.notFound().build();	
 		
 		}
+		log.info("Produto foi deletado!!!");
 		return ResponseEntity.noContent().build();
 	}
 }
