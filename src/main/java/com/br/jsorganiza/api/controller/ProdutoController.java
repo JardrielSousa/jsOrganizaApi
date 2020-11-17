@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/v1/produto")
+@RequestMapping("/v1/produtos")
 public class ProdutoController {
 	
 	@Autowired
