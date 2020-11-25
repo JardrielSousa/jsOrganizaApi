@@ -1,0 +1,17 @@
+spring:
+    datasource:
+        driver-class-name: ${DRIVE_NAME:org.postgresql.Driver}
+        password: ${PASS:qwe123}
+        url: ${URL:jdbc:postgresql://localhost:5433/jsorganiza}
+        username: ${USER:postgres}
+    jpa:
+        database-platform: ${DIALOG:org.hibernate.dialect.PostgreSQL9Dialect}
+        properties:
+            hibernate:
+                format_sql: ${FORMAT:false}
+                temp:
+                    use_jdbc_metadata_defaults: ${TEMP:false}
+        show-sql: ${SHOW_SQL:false}
+    profiles:
+        active: prod
+
