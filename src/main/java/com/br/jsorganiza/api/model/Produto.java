@@ -4,15 +4,23 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+import com.br.jsorganiza.api.enums.FormaDePagamento;
+
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class Produto {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	@NotNull(message = "Nome é obrigatório")
 	private String nome;
@@ -38,50 +46,6 @@ public class Produto {
 
 	public Produto(Long id) {
 		id = Id;
-	}
-	public Long getId() {
-		return Id;
-	}
-	public void setId(Long id) {
-		Id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-	public Double getValor() {
-		return valor;
-	}
-
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
-
-	public Date getDataCompra() {
-		return dataCompra;
-	}
-
-
-	public void setDataCompra(Date dataCompra) {
-		this.dataCompra = dataCompra;
-	}
-	
-	
+	}	
 	
 }
