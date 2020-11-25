@@ -69,7 +69,11 @@ public class VendaController {
 			vendaNova.setValor(venda.getValor());
 			vendaNova.setPagamento(venda.getPagamento());
 			vendaNova.setNomeCliente(venda.getNomeCliente());
-			vendaNova.setEndereço(venda.getEndereço());
+			vendaNova.setEndereco(venda.getEndereco());
+			vendaNova.setTamanho(venda.getTamanho());
+			vendaNova.setNomeCliente(venda.getNomeCliente());
+			vendaNova.setEndereco(venda.getEndereco());
+			vendaNova.setContato(venda.getContato());
 			vendasService.editarVenda(vendaNova);
 			log.info("venda foi alterada!!!");
 			return ResponseEntity.status(HttpStatus.OK).body(vendaNova);

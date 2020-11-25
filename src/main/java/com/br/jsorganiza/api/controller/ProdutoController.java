@@ -66,6 +66,8 @@ public class ProdutoController {
 			produtoNovo.setNome(produto.getNome());
 			produtoNovo.setQuantidade(produto.getQuantidade());
 			produtoNovo.setValor(produto.getValor());
+			produtoNovo.setValorVenda(produto.getValorVenda());
+			produtoNovo.setDataCompra(produto.getDataCompra());
 			produtoService.editarProduto(produtoNovo);
 			log.info("Produto foi alterado!!!");
 			return ResponseEntity.status(HttpStatus.OK).body(produtoNovo);

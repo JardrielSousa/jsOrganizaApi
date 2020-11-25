@@ -34,7 +34,9 @@ public class Venda {
 	@NotNull(message = "Nome do cliente é obrigatório")
 	private String nomeCliente;
 	@NotNull(message = "endereço é obrigatório")
-	private String endereço;
+	private String endereco;
 	@NotNull(message = "contato é obrigatório")
 	private String contato;
+	@NotNull(message = "Tamanho é obrigatório")
+	private String tamanho;
 }

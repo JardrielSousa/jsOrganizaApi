@@ -27,6 +27,8 @@ public class Produto {
 	@PositiveOrZero(message = "São permitidos apenas números positivos e zero")
 	private Double valor;
 	@PositiveOrZero(message = "São permitidos apenas números positivos e zero")
+	private Double valorVenda;
+	@PositiveOrZero(message = "São permitidos apenas números positivos e zero")
 	private int quantidade;
 	@NotNull(message = "Data da compra é obrigatório")
 	private Date dataCompra;
