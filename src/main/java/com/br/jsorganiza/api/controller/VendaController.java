@@ -73,6 +73,7 @@ public class VendaController {
 			vendaNova.setTamanho(venda.getTamanho());
 			vendaNova.setNomeCliente(venda.getNomeCliente());
 			vendaNova.setEndereco(venda.getEndereco());
+			vendaNova.setDataVenda(venda.getDataVenda());
 			vendaNova.setContato(venda.getContato());
 			vendasService.editarVenda(vendaNova);
 			log.info("venda foi alterada!!!");
