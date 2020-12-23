@@ -10,12 +10,10 @@ import javax.validation.constraints.NotNull;
 
 import com.br.jsorganiza.api.enums.FormaDePagamento;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Venda {
 
 	@Id
