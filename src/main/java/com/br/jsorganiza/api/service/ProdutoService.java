@@ -1,8 +1,10 @@
 package com.br.jsorganiza.api.service;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.br.jsorganiza.api.model.Produto;
@@ -11,13 +13,11 @@ import com.br.jsorganiza.api.repository.ProdutoRepository;
 @Service
 public class ProdutoService {
 
+	@Autowired
 	private ProdutoRepository produtoRepository;
-	
-	public ProdutoService(ProdutoRepository produtoRepository) {
-		this.produtoRepository = produtoRepository;
-	}
-	public List<Produto> buscarTodosProduto(){
-		return produtoRepository.findAll();
+
+	public Page<Produto> buscarTodosProduto(Pageable pageable){
+		return produtoRepository.findAll(pageable);
 	}
 	public Optional<Produto> buscarProduto(Long id){
 		Produto livro = produtoExiste(id);
@@ -36,10 +36,6 @@ public class ProdutoService {
 	}
 	
 	private Produto produtoExiste(Long id) {
-		Produto produto = produtoRepository.findById(id).orElse(null);
-		if(produto == null) {
-			return null;
-		}
-		return produto;
+		return produtoRepository.findById(id).orElseThrow();
 	}
 }

@@ -9,10 +9,14 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Produto {
 
 	@Id
@@ -28,22 +32,11 @@ public class Produto {
 	private int quantidade;
 	@NotNull(message = "Data da compra é obrigatório")
 	private Date dataCompra;
-	public Produto() {
-		
-	}
-	
-	
-	public Produto(Long id, String nome, Double valor, int quantidade,Date dataCompra) {
-		super();
-		Id = id;
-		this.nome = nome;
-		this.valor = valor;
-		this.quantidade = quantidade;
-		this.dataCompra = dataCompra;
-		}
 
 	public Produto(Long id) {
 		id = Id;
-	}	
+	}
+
+	
 	
 }

@@ -1,7 +1,7 @@
 spring:
     datasource:
         driver-class-name: ${DRIVE_NAME:org.postgresql.Driver}
-        password: ${PASS:qwe123}
+        password: ${PASS:postgres}
         url: ${URL:jdbc:postgresql://localhost:5433/jsorganiza}
         username: ${USER:postgres}
     jpa:
